@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <meta charset=utf-8 />
+  <title>Cloud Classification | Mapbox</title>
+  <link href='https://www.mapbox.com/base/latest/base.css' rel='stylesheet' />
+  <link href='stylesheets/style.css' rel='stylesheet' />
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="javascripts/app.js"></script>
+</head>
+<body>
+    
+    <div class='grid'>
+      <div class='col12 pad2 center fill-denim dark'>
+        <h2>Cloud Classification</h2>
+      </div>
+  
+      <div class="row center">
+          <div class='col12 pad1 center fill-white prose'>
+          
+              <div class='col6 pad4'>
+                  <h4>Subimage</h4>
+                  <canvas id="subimg"></canvas>
+              </div>
+          
+              <div class='col6 pad4'>
+                  <h4>Patch</h4>
+                  <canvas id="patimg"></canvas>
+              </div>
+          </div>
+      </div>
+      
+      <div class="row center">
+          <div class='col12 pad2 clearfix'>
+            <div class='pill'><!--
+              --><a href='#' class='button stroke classification' data-value="1">Cloudy</a><!--
+              --><a href='#' class='button stroke classification' data-value="0">Not Cloudy</a><!--
+              --><a href='#' class='button stroke classification' data-value="2">Not Sure</a>
+            </div>
+          </div>
+      </div>
+      
+    </div>
+    
+</body>
+</html>
