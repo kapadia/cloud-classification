@@ -2,7 +2,7 @@
 (function() {
     
     var lock = true;
-    var base_url = "http://mapbox-cloudless-testing.s3.amazonaws.com/landsat8/crowd/";
+    var base_url = "https://mapbox-cloudless-testing.s3.amazonaws.com/landsat8/crowd/";
     var currentSubject = null;
     
     
