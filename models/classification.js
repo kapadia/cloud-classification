@@ -13,6 +13,10 @@ var ClassificationSchema = new Schema({
         type: Number,
         required: true
     },
+    volunteer: {
+        type: String,
+        required: true
+    },
     updated: {
         type: Date,
         default: Date.now
