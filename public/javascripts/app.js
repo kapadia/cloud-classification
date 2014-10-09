@@ -6,6 +6,12 @@
     var currentSubject = null;
     
     
+    var HelloUser = React.createClass({displayName: 'HelloUser',
+      render: function(name) {
+          return React.DOM.div({className: "hello"}, "Hello, " + this.props.name);
+      }});
+    
+    
     function putImage(canvas, src, dfd) {
         var ctx = canvas.getContext('2d');
         ctx.imageSmoothingEnabled = false;
@@ -42,6 +48,7 @@
         });
     }
     
+    
     function onClassification(userResponse) {
         if (lock === true) { return; }
         console.log('postClassification', currentSubject);
@@ -55,11 +62,31 @@
         });
     }
     
+    
+    function isLoggedIn() {
+        
+        $.get('user', function(data) {
+            if (data.user) {
+                
+                React.renderComponent(
+                  HelloUser({name: data.user}),
+                  document.querySelector('.user')
+                );
+                
+                $(".interface").removeClass('hide');
+                getSubject();
+            } else {
+                
+            }
+        });
+        
+    }
+    
+    
     function onDOM() {
         
-        // Attach handlers to classification buttons
-        var cloudyEl = document.getElementById("cloudy");
-        var nonCloudyEl = document.getElementById("noncloudy");
+        // Check if logged in
+        isLoggedIn();
         
         $(".classification").on('click', function(evt) {
             var dataset = evt.target.dataset;
@@ -67,10 +94,7 @@
             
             onClassification(classification);
         });
-        
-        // Request the first subject
-        getSubject();
     }
-
+    
     document.addEventListener('DOMContentLoaded', onDOM);
 })();
