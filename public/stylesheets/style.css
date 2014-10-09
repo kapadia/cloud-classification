@@ -5,8 +5,12 @@ canvas {
     border: 1px solid black;
 }
 
-.login {
+.user {
     position: absolute;
     top: 4%;
     right: 2%;
+}
+
+.hide {
+    display: none;
 }
