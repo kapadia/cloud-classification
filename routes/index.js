@@ -23,6 +23,14 @@ router.get('/auth/github/callback', passport.authenticate('github', { failureRed
 });
 
 
+router.get('/user', function(req, res) {
+    var msg = {user: null};
+    
+    msg.user = req.isAuthenticated() ? req.user.username : false;
+    return res.status(200).json(msg);
+});
+
+
 router.post('/classification', ensureAuthenticated, function(req, res) {
     
     var c = new Classification();
@@ -30,7 +38,7 @@ router.post('/classification', ensureAuthenticated, function(req, res) {
     c.subject_id = req.body.subjectId;
     c.volunteer = req.user.username;
     c.save(function(err, doc) {
-      return res.json({"BOO": "YA"});
+      return res.json(200, {"BOO": "YA"});
     });
 });
 
