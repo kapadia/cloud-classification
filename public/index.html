@@ -7,11 +7,10 @@
   <link href='https://www.mapbox.com/base/latest/base.css' rel='stylesheet' />
   <link href='stylesheets/style.css' rel='stylesheet' />
   
-  <script src="//cdnjs.cloudflare.com/ajax/libs/react/0.11.2/react.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/react/0.11.2/JSXTransformer.js"></script>
-  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/react/0.11.2/react.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <script type="text.jsx" src="jsx/user.js"></script>
+  <script src="javascripts/login.js"></script>
+  <script src="javascripts/classification.js"></script>
   <script src="javascripts/app.js"></script>
 </head>
 <body>
@@ -19,39 +18,11 @@
     <div class='grid'>
       <div class='col12 pad2 center fill-denim dark'>
         <h2>Cloud Classification</h2>
-        <div class="user">
-            <a href='/auth/github' class='button login'>Login with GitHub</a>
-        </div>
-        
       </div>
       
-      <div class="interface hide">
-          <div class="row center">
-              <div class='col12 pad1 fill-white prose'>
-          
-                  <div class='col6 pad4'>
-                      <h4>Subimage</h4>
-                      <canvas id="subimg"></canvas>
-                  </div>
-          
-                  <div class='col6 pad4'>
-                      <h4>Patch</h4>
-                      <canvas id="patimg"></canvas>
-                  </div>
-              </div>
-          </div>
-      
-          <div class="row center">
-              <div class='col12 pad2 clearfix'>
-                <div class='pill'><!--
-                  --><a href='#' class='button stroke classification' data-value="1">Cloudy</a><!--
-                  --><a href='#' class='button stroke classification' data-value="0">Not Cloudy</a><!--
-                  --><a href='#' class='button stroke classification' data-value="2">Not Sure</a><!--
-                  --><a href='#' class='button stroke classification' data-value="3">No Data</a>
-                </div>
-              </div>
-          </div>
-     </div>
+      <div class="col12 pad2 center fill-white">
+          <div class="main"></div>
+      </div>
       
     </div>
     
