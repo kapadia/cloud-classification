@@ -42,7 +42,7 @@ router.post('/classification', ensureAuthenticated, function(req, res) {
         c.subject_id = req.body.subjectId;
         c.volunteer = req.user.username;
         c.save(function(err, doc) {
-            return res.json(200);
+            return res.status(200).json({});
         });
         
     });

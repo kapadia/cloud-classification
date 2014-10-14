@@ -30,13 +30,16 @@ var SubjectSchema = new Schema({
 });
 
 SubjectSchema.statics.random = function(callback) {
-    this.count(function(err, count) {
+    var condition = { "classification_count": { "$lt": 5 } };
+    
+    this.count(condition, function(err, count) {
        
         if (err) {
             return callback(err);
         }
         var rand = ~~(Math.random() * count);
-        this.findOne().skip(rand).exec(callback);
+        
+        this.findOne(condition).skip(rand).exec(callback);
     }.bind(this));
 };
 
