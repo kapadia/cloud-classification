@@ -33,13 +33,20 @@ router.get('/user', function(req, res) {
 
 router.post('/classification', ensureAuthenticated, function(req, res) {
     
-    var c = new Classification();
-    c.cloudy = req.body.isCloudy;
-    c.subject_id = req.body.subjectId;
-    c.volunteer = req.user.username;
-    c.save(function(err, doc) {
-      return res.json(200, {"BOO": "YA"});
+    var conditions = { "_id": req.body.subjectId };
+    var update = { "$inc": { classification_count: 1 }, updated: new Date() };
+    Subject.findOneAndUpdate(conditions, update, function(error, subject) {
+        
+        var c = new Classification();
+        c.cloudy = req.body.isCloudy;
+        c.subject_id = req.body.subjectId;
+        c.volunteer = req.user.username;
+        c.save(function(err, doc) {
+            return res.json(200);
+        });
+        
     });
+    
 });
 
 

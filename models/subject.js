@@ -12,6 +12,10 @@ var SubjectSchema = new Schema({
     srcwin: {
         type: Array
     },
+    classification_count: {
+        type: Number,
+        default: 0
+    },
     updated: {
         type: Date,
         default: Date.now
