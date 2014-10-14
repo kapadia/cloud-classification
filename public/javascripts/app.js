@@ -3,15 +3,6 @@
     var lock = true;
     var base_url = "https://mapbox-cloudless-testing.s3.amazonaws.com/landsat8/crowd/";
     var currentSubject = null;
-
-    var HelloUser = React.createClass({
-        displayName: 'HelloUser',
-        render: function(name) {
-            return React.DOM.div({
-                className: "hello"
-            }, "Hello, " + this.props.name);
-        }
-    });
     
     
     function putImage(canvas, src, dfd) {
@@ -65,24 +56,29 @@
             getSubject();
         });
     }
+    
+    
+    function setupClassification(el) {
+        React.renderComponent(ClassificationComponent(), el, function() {
+            $(".classification").on('click', function(evt) {
+                var dataset = evt.target.dataset;
+                var classification = dataset.value;
 
-
+                onClassification(classification);
+            });
+            
+            getSubject();
+        });
+    }
+    
+    
     function isLoggedIn() {
 
         $.get('user', function(data) {
             var el = document.querySelector(".main");
             
             if (data.user) {
-                React.renderComponent(ClassificationComponent(), el, function() {
-                    $(".classification").on('click', function(evt) {
-                        var dataset = evt.target.dataset;
-                        var classification = dataset.value;
-
-                        onClassification(classification);
-                    });
-                    
-                    getSubject();
-                });
+                setupClassification(el);
             } else {
                 React.renderComponent(LoginComponent(), el);
             }
