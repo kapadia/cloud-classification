@@ -4,13 +4,3 @@ canvas {
     height: 400px;
     border: 1px solid black;
 }
-
-.user {
-    position: absolute;
-    top: 4%;
-    right: 2%;
-}
-
-/*.main {
-    margin-top: -3%;
-}*/
